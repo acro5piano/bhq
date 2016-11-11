@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/url"
+	"os"
 	"strings"
 )
 
@@ -13,5 +14,9 @@ func GetIssueKeyFromURL(url_str string) string {
 }
 
 func GetTitle(issue_key string) string {
-	return "title"
+	return api_key()
+}
+
+func api_key() string {
+	return os.Getenv("BACKLOG_API_KEY")
 }
