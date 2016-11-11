@@ -1,10 +1,17 @@
 package main
 
 import (
+	//	"json"
+	"io/ioutil"
+	"net/http"
 	"net/url"
 	"os"
 	"strings"
+
+	"github.com/motemen/ghq/utils"
 )
+
+const BACKLOG_ROOT_URL = "https://scat919.backlog.jp/api/v2/users/myself?apiKey="
 
 // Convert url to issue key
 func GetIssueKeyFromURL(url_str string) string {
@@ -14,9 +21,19 @@ func GetIssueKeyFromURL(url_str string) string {
 }
 
 func GetTitle(issue_key string) string {
-	return api_key()
+	resp, err := http.Get("https://scat919.backlog.jp/api/v2/users/myself?apiKey=" + api_key())
+	utils.DieIf(err)
+	defer resp.Body.Close()
+	body, _ := ioutil.ReadAll(resp.Body)
+
+	return string(body)
 }
 
 func api_key() string {
-	return os.Getenv("BACKLOG_API_KEY")
+	api_key := os.Getenv("BACKLOG_API_KEY")
+	if api_key == "" {
+		os.Exit(1)
+	}
+
+	return api_key
 }

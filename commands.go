@@ -24,6 +24,8 @@ var commandGet cli.Command = cli.Command{
 		fmt.Println("    ", clone_from, "->", clone_to)
 		_, err := exec.Command("mkdir", "-p", clone_to).Output()
 
+		fmt.Println(GetTitle(issue_key))
+
 		if err != nil {
 			fmt.Println(err)
 		}
