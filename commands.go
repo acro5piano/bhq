@@ -2,10 +2,8 @@ package main
 
 import (
 	"fmt"
-	"net/url"
 	"os"
 	"os/exec"
-	"strings"
 
 	"github.com/codegangsta/cli"
 )
@@ -19,7 +17,7 @@ var commandGet cli.Command = cli.Command{
 	Aliases: []string{"g"},
 	Usage:   "get backlog task",
 	Action: func(c *cli.Context) error {
-		issue_key := getIssueKeyFromString(c.Args().First())
+		issue_key := GetIssueKeyFromURL(c.Args().First())
 		clone_from := c.Args().First()
 		clone_to := os.Getenv("HOME") + "/.bhq/" + issue_key
 
@@ -31,11 +29,4 @@ var commandGet cli.Command = cli.Command{
 		}
 		return nil
 	},
-}
-
-// Convert url to issue key
-func getIssueKeyFromString(url_str string) string {
-	u, _ := url.Parse(url_str)
-	issue_key := strings.Split(u.Path, "/")
-	return issue_key[2]
 }
