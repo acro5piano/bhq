@@ -13,6 +13,7 @@ var Commands = []cli.Command{
 	commandGet,
 	commandWhoami,
 	commandList,
+	commandComment,
 }
 
 var commandGet cli.Command = cli.Command{
@@ -26,8 +27,9 @@ var commandGet cli.Command = cli.Command{
 
 		fmt.Println("    ", clone_from, "->", clone_to)
 		_, err := exec.Command("mkdir", "-p", clone_to).Output()
+		utils.DieIf(err)
 
-//		fmt.Println(GetTitle(issue_key))
+		fmt.Println(GetSummary(issue_key))
 
 		if err != nil {
 			fmt.Println(err)
@@ -49,10 +51,19 @@ var commandList cli.Command = cli.Command{
 	Aliases: []string{"l"},
 	Usage:   "list backlog issues",
 	Action: func(c *cli.Context) error {
-		out, err := exec.Command("ls", bhq_root()).Output()
-		utils.DieIf(err)
-		fmt.Println(string(out))
+		for _, issue := range  ListIssues(){
+			fmt.Println(issue.Key, issue.Summary)
+		}
 
+		return nil
+	},
+}
+var commandComment cli.Command = cli.Command{
+	Name:    "comment",
+	Aliases: []string{"c"},
+	Usage:   "add a comment to current issue",
+	Action: func(c *cli.Context) error {
+		fmt.Println(AddComment())
 		return nil
 	},
 }
