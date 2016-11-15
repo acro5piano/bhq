@@ -36,6 +36,16 @@ go get github.com/acro5piano/bhq
 export BACKLOG_API_KEY=YOUR_API_KEY
 ```
 
-# Thanks
+# TIPS
+
+You can change current directory easily if you set this alias:
+
+```sh
+alias blook='cd ~/.bhq/$(./bhq list | peco | cut -d " " -f 1)
+```
+
+Note that `peco` must be installed.
+
+# THANKS
 
 [motemen/ghq: Remote repository management made easy](https://github.com/motemen/ghq)
