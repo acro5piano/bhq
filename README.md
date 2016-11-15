@@ -23,7 +23,7 @@ bhq help     Shows a list of commands or help for one command
 ```
 # DIRECTORY STRUCTURES
 
-```sh
+```
 ~/.bhq
 |-- PROJECT-1
 `-- PROJECT-2
