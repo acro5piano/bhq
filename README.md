@@ -49,3 +49,6 @@ Note that `peco` must be installed.
 # THANKS
 
 [motemen/ghq: Remote repository management made easy](https://github.com/motemen/ghq)
+
+
+BacklogAPIから、添付ファイルアップロードできないのか・・・
