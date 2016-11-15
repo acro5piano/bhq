@@ -38,7 +38,7 @@ export BACKLOG_API_KEY=YOUR_API_KEY
 
 # TIPS
 
-You can change current directory easily if you set this alias:
+You can change current directory easily using this alias:
 
 ```sh
 alias blook='cd ~/.bhq/$(bhq list | peco | cut -d " " -f 1)
