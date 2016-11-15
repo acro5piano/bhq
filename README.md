@@ -33,6 +33,7 @@ bhq help     Shows a list of commands or help for one command
 
 ```sh
 go get github.com/acro5piano/bhq
+export BACKLOG_API_KEY=YOUR_API_KEY
 ```
 
 # Thanks
