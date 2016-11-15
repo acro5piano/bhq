@@ -9,7 +9,7 @@ Simple CLI tool for managing Backlog issues
 ```
 $ bhq get https://spaceid.backlog.jp/view/PROJECT-1
 
-# Runs `mkdir -p ~/.bhq/PROJECT-1
+# Runs `mkdir -p ~/.bhq/PROJECT-1`
 ```
 
 # SYNOPSIS
